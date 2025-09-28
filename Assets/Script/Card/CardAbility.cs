@@ -247,8 +247,6 @@ public class CardAbility : MonoBehaviour
                     GameObject Wolf = GameObject.Instantiate(WolfPrefab);
                     // 生成した狼をフィールドの子オブジェクトに設定
                     Wolf.transform.SetParent(fieldCard.transform);
-                    // フィールドカードの位置を調整
-                    fieldCard.MoveFieldCard();
                     // スケールを設定
                     Wolf.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                     // カードデータの設定

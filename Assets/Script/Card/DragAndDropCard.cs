@@ -146,9 +146,6 @@ public class DragAndDropCard : MonoBehaviour,IBeginDragHandler, IDragHandler, IE
                         // 親をドラック後の親オブジェクトに設定
                         CardObject.transform.SetParent(m_AffterParentObj);
 
-                        // フィールドカードの位置を調整
-                        m_AffterParentObj.GetComponent<FieldCard>().MoveFieldCard();
-
                         // スケールを設定
                         CardObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 

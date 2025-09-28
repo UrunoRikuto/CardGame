@@ -42,14 +42,23 @@ public class HandCardUI : MonoBehaviour
 
         // UIのテクスチャを設定
         // コスト
-        SetCostNum = cardData.cardCost;
-        CostUI.sprite = UISpriteManager.instance.CostSprites[SetCostNum - 1];
+        if (cardData.cardCost != 0)
+        {
+            SetCostNum = cardData.cardCost;
+            CostUI.sprite = UISpriteManager.instance.CostSprites[SetCostNum - 1];
+        }
         // 攻撃力
-        SetAttackNum = cardData.cardAttack;
-        AttackUI.sprite = UISpriteManager.instance.AttackSprites[SetAttackNum - 1];
+        if (cardData.cardAttack != 0)
+        {
+            SetAttackNum = cardData.cardAttack;
+            AttackUI.sprite = UISpriteManager.instance.AttackSprites[SetAttackNum - 1];
+        }
         // 体力
-        SetHpNum = cardData.cardLife;
-        HpUI.sprite = UISpriteManager.instance.HpSprites[SetHpNum - 1];
+        if (cardData.cardLife != 0)
+        {
+            SetHpNum = cardData.cardLife;
+            HpUI.sprite = UISpriteManager.instance.HpSprites[SetHpNum - 1];
+        }
     }
 
     /// <summary>

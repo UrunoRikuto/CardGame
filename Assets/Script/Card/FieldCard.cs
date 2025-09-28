@@ -21,11 +21,20 @@ public class FieldCard : MonoBehaviour
     private int MAX_FIELD_CARD_SIZE = 5;
     public int maxFieldCardSize { get { return MAX_FIELD_CARD_SIZE; } }
 
+    // 移動処理を実行済みの子オブジェクト数
+    private int MoveedchildCount = 0;
+
     /// <summary>
     /// 更新処理
     /// </summary>
     void Update()
     {
+        int childcount = transform.childCount;
+        if(MoveedchildCount != childcount)
+        {
+            MoveFieldCard();
+        }
+
         // フィールドカードの生存チェック
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -45,27 +54,27 @@ public class FieldCard : MonoBehaviour
     /// <summary>
     /// フィールドカードの位置を更新
     /// </summary>
-    public void MoveFieldCard()
+    private void MoveFieldCard()
     {
         // 自身に子オブジェクトがある場合は、子オブジェクトの位置を更新
         // 子オブジェクトの数を取得
-        int childCount = transform.childCount;
+        MoveedchildCount = transform.childCount;
         // 子オブジェクトが存在する場合
-        if (childCount > 0)
+        if (MoveedchildCount > 0)
         {
-            Vector3[] CardPos = new Vector3[childCount];
+            Vector3[] CardPos = new Vector3[MoveedchildCount];
 
             // 子オブジェクトの位置を更新する処理
             // 一番左端の位置を基準にして、カードの間隔を考慮して位置を設定
             // 一番左の位置を設定
-            CardPos[0].x = CardDistance.x / 2 * (childCount - 1) * -1.0f;
+            CardPos[0].x = CardDistance.x / 2 * (MoveedchildCount - 1) * -1.0f;
             CardPos[0].y = 0.0f; // Y座標は0に設定
 
             // 子オブジェクトが複数存在する場合
-            if (childCount > 1)
+            if (MoveedchildCount > 1)
             {
                 // 一番左の位置を基準にして、他のカードの位置を設定
-                for (int i = 1; i < childCount; i++)
+                for (int i = 1; i < MoveedchildCount; i++)
                 {
                     CardPos[i].x = CardPos[0].x + CardDistance.x * i;
                     CardPos[i].y = 0.0f; // Y座標は0に設定
@@ -74,7 +83,7 @@ public class FieldCard : MonoBehaviour
 
 
             // 子オブジェクトの位置を更新
-            for(int i = 0; i < childCount; i++)
+            for(int i = 0; i < MoveedchildCount; i++)
             {
                 Transform childTransform = transform.GetChild(i);
                 if (childTransform != null)

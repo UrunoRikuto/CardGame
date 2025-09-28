@@ -37,11 +37,17 @@ public class FieldCardUI : MonoBehaviour
 
         // UIのテクスチャを設定
         // 攻撃力
-        SetAttackNum = cardData.cardAttack;
-        AttackUI.sprite = UISpriteManager.instance.AttackSprites[SetAttackNum - 1];
+        if (cardData.cardAttack != 0)
+        {
+            SetAttackNum = cardData.cardAttack;
+            AttackUI.sprite = UISpriteManager.instance.AttackSprites[SetAttackNum - 1];
+        }
         // 体力
-        SetHpNum = cardData.cardLife;
-        HpUI.sprite = UISpriteManager.instance.HpSprites[SetHpNum - 1];
+        if (cardData.cardLife != 0)
+        {
+            SetHpNum = cardData.cardLife;
+            HpUI.sprite = UISpriteManager.instance.HpSprites[SetHpNum - 1];
+        }
     }
 
     /// <summary>
