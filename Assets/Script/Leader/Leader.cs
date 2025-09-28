@@ -37,6 +37,9 @@ public class Leader : MonoBehaviour
     /// <param name="collision">衝突したオブジェクトのCollider2Dコンポーネント</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // タグにTargetPointがなかった場合処理しない
+        //if (collision.transform.tag != "TargetPoint") return;
+
         // 戦闘システムを取得
         BattleSystem battleSystem = GameObject.Find("MainSystem").GetComponent<BattleSystem>();
 
@@ -51,6 +54,9 @@ public class Leader : MonoBehaviour
     /// <param name="collision">衝突したオブジェクトのCollider2Dコンポーネント</param>
     private void OnTriggerExit2D(Collider2D collision)
     {
+        // タグにTargetPointがなかった場合処理しない
+        if (collision.transform.tag != "TargetPoint") return;
+
         // 戦闘システムを取得
         BattleSystem battleSystem = GameObject.Find("MainSystem").GetComponent<BattleSystem>();
 

@@ -108,9 +108,9 @@ public class DragAndDropCharacter : MonoBehaviour, IBeginDragHandler, IDragHandl
             rectTransform.sizeDelta = new Vector2(1, 1);
 
             // ターゲットオブジェクトにDragAndDropCharacterコンポーネントを追加
-            DragAndDropCharacter dragAndDropC = TargetObject.AddComponent<DragAndDropCharacter>();
+            //DragAndDropCharacter dragAndDropC = TargetObject.AddComponent<DragAndDropCharacter>();
             // 自身の参照を設定
-            dragAndDropC = this;
+            //dragAndDropC = this;
 
             // ターゲットオブジェクトにトリガー用のコライダーを追加
             TargetObject.AddComponent<BoxCollider2D>().isTrigger = true;

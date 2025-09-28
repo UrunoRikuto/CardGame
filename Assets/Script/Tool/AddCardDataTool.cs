@@ -24,7 +24,7 @@ public class AddCardDataTool : EditorWindow
     /// <summary>
     /// メニューに「CustomTools/AddCardData」を追加し、ウィンドウを表示
     /// </summary>
-    [MenuItem("CustomTools/AddCardData")]
+    [MenuItem("Tools/AddCardData")]
     public static void ShowWindow()
     {
         GetWindow<AddCardDataTool>("CSVカード追加");
