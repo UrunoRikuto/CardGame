@@ -32,7 +32,7 @@ public class CostManager : MonoBehaviour
         CurrentMaxCostCount = CostCount = 0;
 
         // 所持コストの数を表示
-        transform.GetComponent<TextMeshProUGUI>().text = "コスト: " + CostCount.ToString();
+        transform.GetComponent<TextMeshProUGUI>().text = "Cost: " + CostCount.ToString();
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public class CostManager : MonoBehaviour
         CostCount = CurrentMaxCostCount += 1;
 
         // 所持コストの数を表示
-        transform.GetComponent<TextMeshProUGUI>().text = "コスト: " + CostCount.ToString();
+        transform.GetComponent<TextMeshProUGUI>().text = "Cost: " + CostCount.ToString();
     }
 
     /// <summary>
@@ -74,6 +74,6 @@ public class CostManager : MonoBehaviour
         // コストを使用
         CostCount -= cost;
         // 所持コストの数を表示
-        transform.GetComponent<TextMeshProUGUI>().text = "コスト: " + CostCount.ToString();
+        transform.GetComponent<TextMeshProUGUI>().text = "Cost: " + CostCount.ToString();
     }
 }
