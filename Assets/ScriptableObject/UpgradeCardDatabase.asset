@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba79a932864661540bbfe0dc7cd44ace, type: 3}
+  m_Name: UpgradeCardDatabase
+  m_EditorClassIdentifier: 
+  cardDataBase:
+  - cardName: "\u30B9\u30E9\u30A4\u30E0"
+    ActiveFlag: 1
+    AttackFlag: 0
+    cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
+    cardRace: "\u9B54\u7269"
+    cardCost: 1
+    cardAttack: 0
+    cardLife: 0
+    cardActivationTiming: 0
+    cardAbilityType: 0
+    cardHandPrefab: {fileID: 2681092509442886893, guid: 04000d8c8fec3294e9b85d2b441f2166, type: 3}
+    cardFieldPrefab: {fileID: 4626075442848734300, guid: 8cdba4fcc601e9342ae434c513be3810, type: 3}
+  - cardName: "\u30B4\u30D6\u30EA\u30F3"
+    ActiveFlag: 1
+    AttackFlag: 0
+    cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
+    cardRace: "\u9B54\u7269"
+    cardCost: 2
+    cardAttack: 0
+    cardLife: 0
+    cardActivationTiming: 0
+    cardAbilityType: 0
+    cardHandPrefab: {fileID: 2681092509442886893, guid: 2c476a0beaa46ca4fbf1f5defe6a751e, type: 3}
+    cardFieldPrefab: {fileID: 4626075442848734300, guid: 89764f6974389af44b505c2ea4dab848, type: 3}
+  - cardName: "\u76FE\u5175"
+    ActiveFlag: 1
+    AttackFlag: 0
+    cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
+    cardRace: "\u5175\u58EB"
+    cardCost: 0
+    cardAttack: 0
+    cardLife: 0
+    cardActivationTiming: 2
+    cardAbilityType: 2
+    cardHandPrefab: {fileID: 2681092509442886893, guid: e09cf36c1a5319f43a3cf66d80642575, type: 3}
+    cardFieldPrefab: {fileID: 4626075442848734300, guid: 72112212f5d2b674ca4d8d6017656094, type: 3}
+  - cardName: "\u5F13\u5175"
+    ActiveFlag: 1
+    AttackFlag: 0
+    cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
+    cardRace: "\u5175\u58EB"
+    cardCost: 0
+    cardAttack: 0
+    cardLife: 0
+    cardActivationTiming: 0
+    cardAbilityType: 0
+    cardHandPrefab: {fileID: 2681092509442886893, guid: 7f39f827175549b44abda7c2ec3ebe6f, type: 3}
+    cardFieldPrefab: {fileID: 4626075442848734300, guid: 9fef09c5c5410d643b5c3aef9bfad315, type: 3}
+  - cardName: "\u72FC"
+    ActiveFlag: 1
+    AttackFlag: 0
+    cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
+    cardRace: "\u72FC"
+    cardCost: 0
+    cardAttack: 0
+    cardLife: 0
+    cardActivationTiming: 0
+    cardAbilityType: 0
+    cardHandPrefab: {fileID: 2681092509442886893, guid: 0b2b5a849acb68443ab205875e963b98, type: 3}
+    cardFieldPrefab: {fileID: 4626075442848734300, guid: f4f895e579f09a14dad708237c240d63, type: 3}
+  - cardName: "\u72FC\u300C\u30EA\u30FC\u30C0\u30FC\u300D"
+    ActiveFlag: 1
+    AttackFlag: 0
+    cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
+    cardRace: "\u72FC"
+    cardCost: 0
+    cardAttack: 0
+    cardLife: 0
+    cardActivationTiming: 4
+    cardAbilityType: 3
+    cardHandPrefab: {fileID: 2681092509442886893, guid: 0fd3006f2dd0e2440b4168b89a6bd41d, type: 3}
+    cardFieldPrefab: {fileID: 4626075442848734300, guid: 3398dd6b7e9209547b44f56d4099233d, type: 3}

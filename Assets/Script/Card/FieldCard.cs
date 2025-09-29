@@ -142,6 +142,8 @@ public class FieldCard : MonoBehaviour
     {
         // TargetPointタグのオブジェクトは無視
         if (collision.CompareTag("TargetPoint")) return;
+        // UpgradePointerタグのオブジェクトは無視
+        if (collision.CompareTag("UpgradePointer")) return;
 
         // 登録しているカードデータの数を取得
         int CardDataCount = transform.childCount;

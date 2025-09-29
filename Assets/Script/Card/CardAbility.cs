@@ -151,7 +151,7 @@ public class CardAbility : MonoBehaviour
                     }
                 }
                 // 自身のリーダーのターゲット設定を有効にする
-                transform.parent.GetComponent<Leader>().m_bTarget = true;
+                transform.parent.parent.GetComponentInChildren<Leader>().m_bTarget = false;
                 break;
             case AbilityType.Summon:
                 // 発動タイミングが死亡時ではない場合何もしない
@@ -207,7 +207,7 @@ public class CardAbility : MonoBehaviour
                     }
                 }
                 // 自身のリーダーのターゲット設定を無効にする
-                transform.parent.GetComponent<Leader>().m_bTarget = false;
+                transform.parent.parent.GetComponentInChildren<Leader>().m_bTarget = false;
                 break;
             case AbilityType.Summon:
                 SummonAction(cardInfo.m_CardData.cardName);

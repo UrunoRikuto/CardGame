@@ -5,13 +5,15 @@
 * 概要：キャラクターのドラッグアンドドロップ
 * 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// キャラクターのドラッグアンドドロップ
 /// </summary>
-public class DragAndDropCharacter : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragAndDropUpgrade : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     // 自身のRectTransformを取得
     private RectTransform StartTransform
@@ -34,12 +36,66 @@ public class DragAndDropCharacter : MonoBehaviour, IBeginDragHandler, IDragHandl
     // LineRendererの参照
     private LineRenderer m_LineRenderer;
 
+    // 強化可能回数
+    public int m_UpgradeCount { set; get; } = 0;
+    private bool m_CountSetting = false;
+
+    /// <summary>
+    /// 更新処理
+    /// </summary>
+    private void Update()
+    {
+        // 強化可能回数が0以下の場合は灰色に設定
+        if (m_UpgradeCount <= 0) transform.GetComponent<Image>().color = Color.gray;
+        // 黄色に設定
+        else transform.GetComponent<Image>().color = Color.yellow;
+
+        // 強化可能回数をテキストに設定
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_UpgradeCount.ToString();
+
+        if (!m_CountSetting)
+        {
+            // ゲームシステムを取得
+            GameSystem gameSystem = GameObject.Find("MainSystem").GetComponent<GameSystem>();
+            // 現在のゲーム状態に応じて処理を分岐
+            switch (gameSystem.m_CurrentGameState)
+            {
+                case GameSystem.GameState.PlayerTurn:
+                    if (gameSystem.m_nTarnNum >= 6)
+                    {
+                        if (transform.parent.parent.CompareTag("Player"))
+                        {
+                            m_UpgradeCount = 2;
+                            m_CountSetting = true;
+                        }
+                    }
+                    break;
+                case GameSystem.GameState.EnemyTurn:
+                    if (gameSystem.m_nTarnNum >= 6)
+                    {
+                        if (transform.parent.parent.CompareTag("Enemy"))
+                        {
+                            m_UpgradeCount = 2;
+                            m_CountSetting = true;
+                        }
+                    }
+                    break;
+            }
+        }
+    }
+
     /// <summary>
     /// ドラッグ開始時の処理
     /// </summary>
     /// <param name="eventData">ドラッグイベントのデータ</param>
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if(m_UpgradeCount <= 0)
+        {
+            Debug.Log("強化可能回数が0です");
+            return;
+        }
+
         // メインシステムオブジェクトを取得
         GameObject mainSystem = GameObject.Find("MainSystem");
         // 現在のゲーム状態を取得
@@ -65,30 +121,16 @@ public class DragAndDropCharacter : MonoBehaviour, IBeginDragHandler, IDragHandl
             }
         }
 
-        // カードデータの取得
-        CardData cardData = transform.GetComponent<CardInfo>().m_CardData;
-
-        // 戦闘フラグが立っていない場合はドラッグできない
-        if (!cardData.AttackFlag)
-        {
-            return;
-        }
-
-        // 戦闘システムを取得
-        BattleSystem battleSystem = mainSystem.GetComponent<BattleSystem>();
-
-        // 戦闘システムの攻撃者側の設定
-        // カードデータを設定
-        battleSystem.m_BattleCardData[0] = cardData;
-        // 親オブジェクトを設定
-        battleSystem.m_AttackerParent = transform.parent.parent;
-
+        // 強化システムを取得
+        UpgradeSystem upgradeSystem = mainSystem.GetComponent<UpgradeSystem>();
+        // 強化者を設定
+        upgradeSystem.m_UpgraderParent = transform.parent.parent;
 
         // Canvasの子オブジェクトにターゲットオブジェクトを生成
         if (TargetObject == null)
         {
             // ターゲットオブジェクトの生成
-            TargetObject = new GameObject("TargetPointer");
+            TargetObject = new GameObject("UpgradePointer");
             // ターゲットオブジェクトにRectTransformを追加
             RectTransform rectTransform = TargetObject.AddComponent<RectTransform>();
 
@@ -96,28 +138,23 @@ public class DragAndDropCharacter : MonoBehaviour, IBeginDragHandler, IDragHandl
             // 自身の親がPlayerの場合はEnemyのCanvasに、Enemyの場合はPlayerのCanvasに設定
             if (transform.parent.parent.CompareTag("Player"))
             {
-                rectTransform.SetParent(GameObject.Find("Enemy").transform);
+                rectTransform.SetParent(GameObject.Find("Player").transform);
             }
             else if (transform.parent.parent.CompareTag("Enemy"))
             {
-                rectTransform.SetParent(GameObject.Find("Player").transform);
+                rectTransform.SetParent(GameObject.Find("Enemy").transform);
             }
 
             // ターゲットオブジェクトの初期設定
             rectTransform.localScale = Vector3.one;
             rectTransform.sizeDelta = new Vector2(1, 1);
 
-            // ターゲットオブジェクトにDragAndDropCharacterコンポーネントを追加
-            //DragAndDropCharacter dragAndDropC = TargetObject.AddComponent<DragAndDropCharacter>();
-            // 自身の参照を設定
-            //dragAndDropC = this;
-
             // ターゲットオブジェクトにトリガー用のコライダーを追加
             TargetObject.AddComponent<BoxCollider2D>().isTrigger = true;
             // リジットボディを追加して重力を無効化
             TargetObject.AddComponent<Rigidbody2D>().gravityScale = 0.0f;
             // タグを設定
-            TargetObject.tag = "TargetPoint";
+            TargetObject.tag = "UpgradePointer";
 
             // Canvasの一番上に表示されるように設定
             rectTransform.SetAsLastSibling();
@@ -208,16 +245,13 @@ public class DragAndDropCharacter : MonoBehaviour, IBeginDragHandler, IDragHandl
             }
         }
 
-        // 戦闘システムを取得
-        BattleSystem battleSystem = GameObject.Find("MainSystem").GetComponent<BattleSystem>();
-
-        // バトルを開始
-        if (battleSystem.Battle())
+        // 強化システムを取得して強化を行う
+        UpgradeSystem upgradeSystem = mainSystem.GetComponent<UpgradeSystem>();
+        if (upgradeSystem.Upgrade())
         {
-            // カードデータの戦闘フラグをfalseに設定
-            transform.GetComponent<CardInfo>().m_CardData.AttackFlag = false;
+            // 強化可能回数を消費
+            m_UpgradeCount--;
         }
-
         // ラインレンダラーの位置数をリセット
         m_LineRenderer.positionCount = 0;
 

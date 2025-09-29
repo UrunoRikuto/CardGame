@@ -7,7 +7,8 @@ public class Leader : MonoBehaviour
     /// <summary>
     /// 体力
     /// </summary>
-    public float m_fHp;
+    [Range(0, 20)]
+    public int m_nHp;
 
     /// <summary>
     /// ターゲットに設定できるかどうか
@@ -19,7 +20,7 @@ public class Leader : MonoBehaviour
     /// </summary>
     void Start()
     {
-        m_fHp = 100.0f;
+        m_nHp = 20;
         m_bTarget = true;
     }
 

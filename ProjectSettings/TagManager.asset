@@ -11,6 +11,7 @@ TagManager:
   - Cost
   - Attack
   - Hp
+  - UpgradePointer
   layers:
   - Default
   - TransparentFX

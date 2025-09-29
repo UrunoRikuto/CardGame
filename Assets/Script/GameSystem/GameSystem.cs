@@ -17,6 +17,9 @@ public class GameSystem : MonoBehaviour
     [SerializeField]
     private Button m_TurnChangeButton;
 
+    [Header("プレイヤーのリーダー")]
+    [SerializeField]
+    private Transform m_PlayerParent;
     [Header("プレイヤーの山札スクリプト")]
     [SerializeField]
     private DeckData m_PlayerDeck;
@@ -27,6 +30,9 @@ public class GameSystem : MonoBehaviour
     [SerializeField]
     private CostManager m_PlayerCostManager;
 
+    [Header("敵のリーダー")]
+    [SerializeField]
+    private Transform m_EnemyParent;
     [Header("敵の山札スクリプト")]
     [SerializeField]
     private DeckData m_EnemyDeck;
@@ -87,7 +93,7 @@ public class GameSystem : MonoBehaviour
     private TurnPhase m_CurrentTurnPhase;
 
     // ターン数
-    private int m_nTarnNum = 0;
+    public int m_nTarnNum { get; private set; } = 0;
 
     /// <summary>
     /// 初期化処理

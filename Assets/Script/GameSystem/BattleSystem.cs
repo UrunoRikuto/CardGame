@@ -35,7 +35,7 @@ public class BattleSystem : MonoBehaviour
         if(m_TargetLeader != null)
         {
             // ƒŠ[ƒ_[‚Ì‘Ì—Í‚ğŒ¸‚ç‚·
-            m_TargetLeader.m_fHp -= m_BattleCardData[0].cardAttack;
+            m_TargetLeader.m_nHp -= (int)m_BattleCardData[0].cardAttack;
 
             IsBattle = true;
         }

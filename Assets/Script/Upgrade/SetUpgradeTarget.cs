@@ -1,8 +1,8 @@
 /*＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 * 
-* file：SetBattleTarget.cs
+* file：SetUpgradeTarget.cs
 * 
-* 概要：戦闘のターゲット設定
+* 概要：強化のターゲット設定
 * 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
 using UnityEngine;
@@ -10,7 +10,7 @@ using UnityEngine;
 /// <summary>
 /// 戦闘のターゲット設定
 /// </summary>
-public class SetBattleTarget : MonoBehaviour
+public class SetUpgradeTarget : MonoBehaviour
 {
     /// <summary>
     /// ターゲットに設定できるかどうか
@@ -26,13 +26,13 @@ public class SetBattleTarget : MonoBehaviour
     }
 
     /// <summary>
-    /// TargetPointがトリガーに入ったとき
+    /// UpgradePointerがトリガーに入ったとき
     /// </summary>
     /// <param name="collision">衝突したオブジェクトのCollider2Dコンポーネント</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // タグにTargetPointがなかった場合処理しない
-        if (collision.transform.tag != "TargetPoint") return;
+        // タグにUpgradePointerがなかった場合処理しない
+        if (collision.transform.tag != "UpgradePointer") return;
 
         // ターゲットに設定できない場合は処理を抜ける
         if (!m_bTarget)
@@ -41,34 +41,31 @@ public class SetBattleTarget : MonoBehaviour
             return;
         }
 
-        // 戦闘システムを取得
-        BattleSystem battleSystem = GameObject.Find("MainSystem").GetComponent<BattleSystem>();
+        // 強化システムを取得
+        UpgradeSystem upgradeSystem = GameObject.Find("MainSystem").GetComponent<UpgradeSystem>();
 
-        // 自分自身や仲間をターゲットにすることはできない
-        if (battleSystem.m_AttackerParent == transform.parent.parent)
+        // 相手をターゲットにすることはできない
+        if (upgradeSystem.m_UpgraderParent != transform.parent.parent)
         {
-            Debug.Log("自分自身や仲間をターゲットにすることはできません");
+            Debug.Log("相手をターゲットにすることはできない");
             return;
         }
 
-        // 戦闘の防御側のカードデータを設定
-        battleSystem.m_BattleCardData[1]
-            = transform.GetComponent<CardInfo>().m_CardData;
+        // 対象に設定する
+        upgradeSystem.TargetCard = transform;
     }
 
     /// <summary>
-    /// TargetPointがトリガーから出たとき
+    /// UpgradePointerがトリガーから出たとき
     /// </summary>
     /// <param name="collision">衝突したオブジェクトのCollider2Dコンポーネント</param>
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // タグにTargetPointがなかった場合処理しない
-        if (collision.transform.tag != "TargetPoint") return;
+        // タグにUpgradePointerがなかった場合処理しない
+        if (collision.transform.tag != "UpgradePointer") return;
 
-        // 戦闘システムを取得
-        BattleSystem battleSystem = GameObject.Find("MainSystem").GetComponent<BattleSystem>();
-
-        // 戦闘の非攻撃者側のカードデータをクリア
-        battleSystem.m_BattleCardData[1] = null;
+        // 強化システムを取得して対象から外す
+        UpgradeSystem upgradeSystem = GameObject.Find("MainSystem").GetComponent<UpgradeSystem>();
+        upgradeSystem.TargetCard = null;
     }
 }

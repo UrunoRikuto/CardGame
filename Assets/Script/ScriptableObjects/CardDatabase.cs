@@ -28,12 +28,15 @@ public class CardData
     public string cardRace;
 
     [Header("コスト")]
+    [Range(1,10)]
     public int cardCost;
 
     [Header("攻撃力")]
+    [Range(1, 10)]
     public int cardAttack;
 
     [Header("体力・持続時間")]
+    [Range(1, 10)]
     public int cardLife;
 
     [Header("効果の発動タイミング")]
