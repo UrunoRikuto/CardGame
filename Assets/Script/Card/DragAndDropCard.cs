@@ -32,7 +32,15 @@ public class DragAndDropCard : MonoBehaviour,IBeginDragHandler, IDragHandler, IE
         // コストマネージャーの参照を取得
         if (m_CostManager == null)
         {
-           transform.parent.parent.GetChild(0).TryGetComponent<CostManager>(out m_CostManager);
+            for(int i = 0;i < transform.parent.parent.childCount;i++)
+            {
+                Transform child = transform.parent.parent.GetChild(i);
+                if(child.CompareTag("Cost"))
+                {
+                    m_CostManager = child.GetComponent<CostManager>();
+                    break;
+                }
+            }
         }
     }
 

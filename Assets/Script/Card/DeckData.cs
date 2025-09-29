@@ -30,6 +30,7 @@ public class DeckData : MonoBehaviour
     [Header("デッキに設定するカードデータ")]
     [SerializeField]
     private List<CardData> deckCards = new List<CardData>();
+    public int DeckCount { get { return deckCards.Count; } }
 
     /// <summary>
     /// 初期化処理
