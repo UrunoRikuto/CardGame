@@ -150,6 +150,8 @@ public class CardAbility : MonoBehaviour
                         setBattleTarget.m_bTarget = true;
                     }
                 }
+                // 自身のリーダーのターゲット設定を有効にする
+                transform.parent.GetComponent<Leader>().m_bTarget = true;
                 break;
             case AbilityType.Summon:
                 // 発動タイミングが死亡時ではない場合何もしない
@@ -186,7 +188,7 @@ public class CardAbility : MonoBehaviour
                 cardInfo.m_CardData.AttackFlag = true;
                 break;
             case AbilityType.Guard:
-                // 守護を持つカード以外のSetTagetのターゲット設定を無効にする
+                // 守護を持つカード以外のSetTargetのターゲット設定を無効にする
                 for(int i = 0; i < transform.parent.childCount; i++)
                 {
                     // 子オブジェクトを取得
@@ -204,6 +206,8 @@ public class CardAbility : MonoBehaviour
                         setBattleTarget.m_bTarget = false;
                     }
                 }
+                // 自身のリーダーのターゲット設定を無効にする
+                transform.parent.GetComponent<Leader>().m_bTarget = false;
                 break;
             case AbilityType.Summon:
                 SummonAction(cardInfo.m_CardData.cardName);

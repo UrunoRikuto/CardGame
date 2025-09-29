@@ -7,7 +7,7 @@ public class Leader : MonoBehaviour
     /// <summary>
     /// 体力
     /// </summary>
-    public float m_fHp { get; set; }
+    public float m_fHp;
 
     /// <summary>
     /// ターゲットに設定できるかどうか
@@ -38,7 +38,15 @@ public class Leader : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // タグにTargetPointがなかった場合処理しない
-        //if (collision.transform.tag != "TargetPoint") return;
+        if (collision.transform.tag != "TargetPoint") return;
+
+        // ターゲットに設定できない場合は処理を抜ける
+        if (!m_bTarget)
+        {
+            Debug.Log("ターゲットに設定できません");
+            return;
+        }
+
 
         // 戦闘システムを取得
         BattleSystem battleSystem = GameObject.Find("MainSystem").GetComponent<BattleSystem>();

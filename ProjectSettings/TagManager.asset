@@ -8,6 +8,9 @@ TagManager:
   - HandCard
   - Enemy
   - TargetPoint
+  - Cost
+  - Attack
+  - Hp
   layers:
   - Default
   - TransparentFX
