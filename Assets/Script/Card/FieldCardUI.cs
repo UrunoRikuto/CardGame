@@ -32,8 +32,24 @@ public class FieldCardUI : MonoBehaviour
         CardData cardData = GetComponent<CardInfo>().m_CardData;
 
         // UIの設定
-        AttackUI = transform.GetChild(0).GetComponent<Image>();
-        HpUI = transform.GetChild(1).GetComponent<Image>();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            // 子オブジェクトのタグを取得
+            string childTag = transform.GetChild(i).tag;
+
+            // タグによって処理を分ける
+            switch (childTag)
+            {
+                case "Attack":
+                    AttackUI = transform.GetChild(i).GetComponent<Image>();
+                    break;
+                case "Hp":
+                    HpUI = transform.GetChild(i).GetComponent<Image>();
+                    break;
+            }
+
+            if (AttackUI != null && HpUI != null) break;
+        }
 
         // UIのテクスチャを設定
         // 攻撃力

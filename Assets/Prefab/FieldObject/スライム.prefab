@@ -143,14 +143,14 @@ MonoBehaviour:
   m_CardData:
     cardName: 
     ActiveFlag: 1
-    LeaderAttackFlag: 0
+    AttackFlag: 0
     cardType: 
     cardRace: 
     cardCost: 0
     cardAttack: 0
     cardLife: 0
-    cardEffectTiming: 
-    cardEffectType: 0
+    cardActivationTiming: 0
+    cardAbilityType: 0
     cardHandPrefab: {fileID: 0}
     cardFieldPrefab: {fileID: 0}
 --- !u!114 &8668206510817322237
@@ -177,19 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee1134267902104bb0298a0a2884c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CardData:
-    cardName: 
-    ActiveFlag: 1
-    LeaderAttackFlag: 0
-    cardType: 
-    cardRace: 
-    cardCost: 0
-    cardAttack: 0
-    cardLife: 0
-    cardEffectTiming: 
-    cardEffectType: 0
-    cardHandPrefab: {fileID: 0}
-    cardFieldPrefab: {fileID: 0}
 --- !u!114 &-7682070413122207448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +214,7 @@ GameObject:
   - component: {fileID: 6088554989345258765}
   m_Layer: 5
   m_Name: Hp
-  m_TagString: Untagged
+  m_TagString: Hp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,7 +289,7 @@ GameObject:
   - component: {fileID: 1336568747831382011}
   m_Layer: 5
   m_Name: Attack
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

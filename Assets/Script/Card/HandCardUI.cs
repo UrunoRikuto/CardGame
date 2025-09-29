@@ -36,9 +36,27 @@ public class HandCardUI : MonoBehaviour
         CardData cardData = GetComponent<CardInfo>().m_CardData;
 
         // UIの設定
-        CostUI = transform.GetChild(0).GetComponent<Image>();
-        AttackUI = transform.GetChild(1).GetComponent<Image>();
-        HpUI = transform.GetChild(2).GetComponent<Image>();
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            // 子オブジェクトのタグを取得
+            string childTag = transform.GetChild(i).tag;
+
+            // タグによって処理を分ける
+            switch(childTag)
+            {
+                case "Cost":
+                    CostUI = transform.GetChild(i).GetComponent<Image>();
+                    break;
+                case "Attack":
+                    AttackUI = transform.GetChild(i).GetComponent<Image>();
+                    break;
+                case "Hp":
+                    HpUI = transform.GetChild(i).GetComponent<Image>();
+                    break;
+            }
+
+            if (CostUI != null && AttackUI != null && HpUI != null) break;
+        }
 
         // UIのテクスチャを設定
         // コスト
