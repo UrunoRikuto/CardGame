@@ -37,6 +37,14 @@ public class BattleSystem : MonoBehaviour
             // リーダーの体力を減らす
             m_TargetLeader.m_nHp -= (int)m_BattleCardData[0].cardAttack;
 
+            if(m_TargetLeader.m_nHp <= 0)
+            {
+                // ゲームシステムの取得
+                GameSystem gameSystem = transform.GetComponent<GameSystem>();
+                // ゲームエンド
+                gameSystem.SetEndGame();
+            }
+
             IsBattle = true;
         }
 

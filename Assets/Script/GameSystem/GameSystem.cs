@@ -6,6 +6,7 @@
 * 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -227,8 +228,12 @@ public class GameSystem : MonoBehaviour
         // ゲーム終了時の処理
         Debug.Log("ゲームが終了しました。");
         // ここでゲームの結果を表示したり、リセット処理を行ったりすることができます。
+        SceneManager.LoadScene("TitleScene");
     }
-
+    public void SetEndGame()
+    {
+        m_CurrentGameState = GameState.End;
+    }
     /// <summary>
     /// 次のターンに移行する処理
     /// </summary>
