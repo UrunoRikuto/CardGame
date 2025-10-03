@@ -2208,6 +2208,7 @@ GameObject:
   - component: {fileID: 1145830982}
   - component: {fileID: 1145830985}
   - component: {fileID: 1145830986}
+  - component: {fileID: 1145830987}
   m_Layer: 0
   m_Name: MainSystem
   m_TagString: Untagged
@@ -2320,6 +2321,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e397b1753fdb46a4cad7e7a4017405ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1145830987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145830981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388f41a499193474686f845cb9eafb21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationMaxTimeList: 00000000
 --- !u!1 &1393099184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3064,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2721faf32a3d249a9e7efa74a5263a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NumberSprites:
+  - {fileID: 21300000, guid: b2d1ebb17ba53fd49bea8b967a79e307, type: 3}
+  - {fileID: 21300000, guid: 7204abc02899b4b47ba646e933583bd7, type: 3}
+  - {fileID: 21300000, guid: ed5b35ec74de0ea4e87718f0f8c52b3f, type: 3}
+  - {fileID: 21300000, guid: ea52ce9473fde3546a13068a141b1c32, type: 3}
+  - {fileID: 21300000, guid: 89a5dcf905840804996866c099547e7e, type: 3}
+  - {fileID: 21300000, guid: 200880294f69e8949946b07be20a08bd, type: 3}
+  - {fileID: 21300000, guid: bb02b74cc90e0cf46b4d4d612d7f5a7d, type: 3}
+  - {fileID: 21300000, guid: 44814ceb86e000f4481fd2520eee1a53, type: 3}
+  - {fileID: 21300000, guid: fbf148a260d469e4691cbd5d835165db, type: 3}
+  - {fileID: 21300000, guid: 4a59be4467907314cb3e61c20b263027, type: 3}
   CostSprites:
   - {fileID: 21300000, guid: 88d5c36aa3bc2ed46bcd3b2cdcc406f4, type: 3}
   - {fileID: 21300000, guid: c48a9b3072e4a314987b68ec063a307b, type: 3}

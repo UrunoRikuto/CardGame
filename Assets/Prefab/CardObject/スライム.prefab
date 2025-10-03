@@ -323,9 +323,9 @@ MonoBehaviour:
     AttackFlag: 0
     cardType: 
     cardRace: 
-    cardCost: 0
-    cardAttack: 0
-    cardLife: 0
+    cardCost: 1
+    cardAttack: 1
+    cardLife: 1
     cardActivationTiming: 0
     cardAbilityType: 0
     cardHandPrefab: {fileID: 0}

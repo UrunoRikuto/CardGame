@@ -232,14 +232,14 @@ public class CardAbility : MonoBehaviour
         if (CanSummonCount <= 0) return;
 
         // アセットの中のデータベースを取得
-        CardDatabase cardDataBase = AssetDatabase.LoadAssetAtPath<CardDatabase>("Assets/Data/CardDatabase.asset");
-
+        CardDatabase cardDataBase = AssetDatabase.LoadAssetAtPath<CardDatabase>("Assets/ScriptableObject/CardDatabase.asset");
+        int summonNum = 0;
         // モンスターの名前で処理を分岐
         switch (Name)
         {
             case "狼「リーダー」": // 狼2体の召喚処理
                 // 生成回数の制限
-                int summonNum = Mathf.Clamp(CanSummonCount, 0, 2);
+                summonNum = Mathf.Clamp(CanSummonCount, 0, 2);
 
                 for(int i = 0; i < summonNum;i++)
                 {
@@ -255,6 +255,26 @@ public class CardAbility : MonoBehaviour
                     Wolf.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                     // カードデータの設定
                     Wolf.GetComponent<CardInfo>().m_CardData = CardDatabase.GetCardData("狼", cardDatabaseInstance);
+                }
+                break;
+            case "スライム": // 強化前スライム2体の召喚処理
+                // 生成回数の制限
+                summonNum = Mathf.Clamp(CanSummonCount, 0, 2);
+
+                for( int i = 0; i < summonNum; i++)
+                {
+                    // データベースをインスタンス化
+                    CardDatabase cardDatabaseInstance = ScriptableObject.Instantiate(cardDataBase);
+                    // スライムのフィールドプレハブを取得
+                    GameObject SlimePrefab = CardDatabase.GetCardData("スライム", cardDatabaseInstance).cardFieldPrefab;
+                    // スライムを生成
+                    GameObject Slime = GameObject.Instantiate(SlimePrefab);
+                    // 生成したスライムをフィールドの子オブジェクトに設定
+                    Slime.transform.SetParent(fieldCard.transform);
+                    // スケールを設定
+                    Slime.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                    // カードデータの設定
+                    Slime.GetComponent<CardInfo>().m_CardData = CardDatabase.GetCardData("スライム", cardDatabaseInstance);
                 }
                 break;
         }

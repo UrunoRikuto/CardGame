@@ -34,6 +34,8 @@ public class UpgradeSystem : MonoBehaviour
         // 使用するカードデータの取得
         CardData upgradeCardData = CardDatabase.GetCardData(targetName, UpgradecardDataInstancebase);
 
+        // 攻撃を行うフラグを同期させる
+        upgradeCardData.AttackFlag = TargetCardData.AttackFlag;
         // 攻撃力と体力は強化前のカードの値に+2加算する
         upgradeCardData.cardAttack = TargetCardData.cardAttack + 2;
         upgradeCardData.cardLife = TargetCardData.cardLife + 2;

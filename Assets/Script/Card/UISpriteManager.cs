@@ -16,6 +16,8 @@ public class UISpriteManager : MonoBehaviour
     public static UISpriteManager instance { private set; get; }
 
     // 管理するスプライト素材
+    [Header("数字のスプライト素材")]
+    public Sprite[] NumberSprites;
     [Header("設定するコスト用スプライト素材")]
     public Sprite[] CostSprites;
     [Header("設定する攻撃力用スプライト素材")]

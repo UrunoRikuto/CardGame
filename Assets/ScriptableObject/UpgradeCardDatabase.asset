@@ -21,8 +21,8 @@ MonoBehaviour:
     cardCost: 1
     cardAttack: 0
     cardLife: 0
-    cardActivationTiming: 0
-    cardAbilityType: 0
+    cardActivationTiming: 4
+    cardAbilityType: 3
     cardHandPrefab: {fileID: 2681092509442886893, guid: 04000d8c8fec3294e9b85d2b441f2166, type: 3}
     cardFieldPrefab: {fileID: 4626075442848734300, guid: 8cdba4fcc601e9342ae434c513be3810, type: 3}
   - cardName: "\u30B4\u30D6\u30EA\u30F3"

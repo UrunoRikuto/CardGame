@@ -74,7 +74,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b057e7630d4b7a748a3da97179b46a72, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -147,9 +147,9 @@ MonoBehaviour:
     AttackFlag: 0
     cardType: 
     cardRace: 
-    cardCost: 0
-    cardAttack: 0
-    cardLife: 0
+    cardCost: 1
+    cardAttack: 1
+    cardLife: 1
     cardActivationTiming: 0
     cardAbilityType: 0
     cardHandPrefab: {fileID: 0}
