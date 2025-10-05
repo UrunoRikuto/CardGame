@@ -12,6 +12,7 @@ TagManager:
   - Attack
   - Hp
   - UpgradePointer
+  - Deck
   layers:
   - Default
   - TransparentFX

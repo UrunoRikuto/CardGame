@@ -247,5 +247,10 @@ public class GameSystem : MonoBehaviour
         m_CurrentGameState = m_NextGameState;
         // ターンフェーズを初期化
         m_CurrentTurnPhase = TurnPhase.Draw;
+
+        // CardAnimationManagerの取得
+        CardAnimationManager cardAnimationManager = GameObject.Find("CardAnimationManager").GetComponent<CardAnimationManager>();
+        // カードを引くアニメーションを再生
+        cardAnimationManager.PlayAnimation(CardAnimationType.Draw);
     }
 }

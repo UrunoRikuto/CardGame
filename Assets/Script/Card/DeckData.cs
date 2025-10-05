@@ -7,6 +7,7 @@
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// デッキデータ
@@ -31,6 +32,7 @@ public class DeckData : MonoBehaviour
     [SerializeField]
     private List<CardData> deckCards = new List<CardData>();
     public int DeckCount { get { return deckCards.Count; } }
+    public Sprite NextCardTex { get { return deckCards.Count > 0 ? deckCards[deckCards.Count - 1].cardHandPrefab.GetComponent<Image>().sprite : null; } }
 
     /// <summary>
     /// 初期化処理
