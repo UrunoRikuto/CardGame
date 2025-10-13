@@ -46,8 +46,14 @@ public class HandCard : MonoBehaviour
                 offsetX = (i - (childCount / 2)) * offsetXScale; 
             }
 
+            float offsetY = 0.0f;
+            if(child.GetComponent<DragAndDropCard>().m_IsMouseOver)
+            {
+                offsetY = 30.0f;
+            }
+
             // À•W‚Ìİ’è
-            child.localPosition = new Vector3(offsetX, 0, 0); // —á: X²•ûŒü‚É0.5f‚¸‚Â‚¸‚ç‚·
+            child.localPosition = new Vector3(offsetX, offsetY, 0); // —á: X²•ûŒü‚É0.5f‚¸‚Â‚¸‚ç‚·
         }
     }
 

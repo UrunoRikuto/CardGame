@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// 手札カードのドラッグアンドドロップ
 /// </summary>
-public class DragAndDropCard : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragAndDropCard : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     // ドラック開始前の親オブジェクト
     private Transform m_BeforeParentObj;
@@ -23,6 +23,9 @@ public class DragAndDropCard : MonoBehaviour,IBeginDragHandler, IDragHandler, IE
 
     // コストマネージャーの参照
     private CostManager m_CostManager;
+
+    // マウスオーバー中のフラグ
+    public bool m_IsMouseOver { set; get; }
 
     /// <summary>
     /// 初期化処理
@@ -200,5 +203,19 @@ public class DragAndDropCard : MonoBehaviour,IBeginDragHandler, IDragHandler, IE
         m_BeforeParentObj = null;
         // 新しい親オブジェクトをクリア
         m_AffterParentObj = null;
+    }
+
+    /// <summary>
+    /// ポインターがオブジェクトに入ったときの処理
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        m_IsMouseOver = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        m_IsMouseOver = false;
     }
 }
