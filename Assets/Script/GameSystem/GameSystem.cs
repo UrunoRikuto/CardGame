@@ -248,6 +248,7 @@ public class GameSystem : MonoBehaviour
         // ターンフェーズを初期化
         m_CurrentTurnPhase = TurnPhase.Draw;
 
+
         // CardAnimationManagerの取得
         CardAnimationManager cardAnimationManager = GameObject.Find("CardAnimationManager").GetComponent<CardAnimationManager>();
         // カードを引くアニメーションを再生

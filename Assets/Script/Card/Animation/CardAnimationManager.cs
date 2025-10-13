@@ -41,6 +41,23 @@ public class CardAnimationManager : MonoBehaviour
         switch(In_type)
         {
             case CardAnimationType.Draw:
+                // 引く前のカード枚数を取得
+                for(int i = 0; i < parent.childCount; i++)
+                {
+                    if (parent.GetChild(i).CompareTag("HandCard"))
+                    {
+                        // 手札の子オブジェクトの枚数を取得
+                        int HandCardChildCount = parent.GetChild(i).childCount;
+
+                        // 手札の最大枚数を超えている場合は処理を抜ける
+                        if (parent.GetChild(i).GetComponent<HandCard>().MAX_HANDCARD_SIZE <= HandCardChildCount)
+                        {
+                            return;
+                        }
+                        break;
+                    }
+                }
+
                 // プレイヤーのカードを引くアニメーションを再生
                 // CardAnimationManagerの子オブジェクトとして生成
                 animationObj = Instantiate(m_CardAnimationPrefab[0],transform);

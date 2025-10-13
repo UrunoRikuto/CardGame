@@ -1,4 +1,3 @@
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -69,13 +68,13 @@ public class DrawCardAnimation : MonoBehaviour
         float time = 0.0f;
         if (!m_TextureChangeFlag)
         {
-            time = m_ElapsedTime * 2;
+            time = m_ElapsedTime * 2.5f;
             rotateY = Mathf.Lerp(0.0f, 90.0f, time * 2);
             rotateZ = Mathf.Lerp(0.0f, 90.0f, time);
         }
         else
         {
-            time = m_ElapsedTime;
+            time = m_ElapsedTime * 3;
             rotateY = Mathf.Lerp(90.0f, 0.0f, time * 2);
             rotateZ = 0.0f;
         }

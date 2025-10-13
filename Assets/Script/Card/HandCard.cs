@@ -13,8 +13,7 @@ using UnityEngine;
 public class HandCard : MonoBehaviour
 {    
     [Header("手札の最大サイズ")]
-    [SerializeField]
-    private int MAX_HANDCARD_SIZE = 5;
+    public int MAX_HANDCARD_SIZE = 5;
 
     [Header("取り出し後の格納先")]
     [SerializeField]
@@ -25,24 +24,26 @@ public class HandCard : MonoBehaviour
     /// </summary>
     void Update()
     {
+        int childCount = HandCardsContainer.transform.childCount;
+
         // カードの子オブジェクトの位置を重ならないように更新
-        for (int i = 0; i < HandCardsContainer.transform.childCount; i++)
+        for (int i = 0; i < childCount; i++)
         {
             // 子オブジェクトを取得
             Transform child = HandCardsContainer.transform.GetChild(i);
             // 子オブジェクトの位置を調整
             float offsetX = 0.0f;
             // X軸方向に120.0fずつずらす
-            float offsetXScale = 120.0f; 
-            if (HandCardsContainer.transform.childCount % 2 == 0)
+            float offsetXScale = 120.0f - (10.0f * (childCount - 5));
+            if (childCount % 2 == 0)
             {
                 // 偶数の場合
-                offsetX = ((i - HandCardsContainer.transform.childCount / 2) + 0.5f) * offsetXScale; 
+                offsetX = ((i - childCount / 2) + 0.5f) * offsetXScale; 
             }
             else
             {
                 // 奇数の場合
-                offsetX = (i - (HandCardsContainer.transform.childCount / 2)) * offsetXScale; 
+                offsetX = (i - (childCount / 2)) * offsetXScale; 
             }
 
             // 座標の設定
