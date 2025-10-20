@@ -684,8 +684,8 @@ RectTransform:
   - {fileID: 1393099185}
   - {fileID: 364413811}
   - {fileID: 840787948}
-  - {fileID: 188222693}
   - {fileID: 556995635}
+  - {fileID: 188222693}
   - {fileID: 1761274182}
   m_Father: {fileID: 2083022865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1397,8 +1397,8 @@ RectTransform:
   - {fileID: 174262628}
   - {fileID: 36669712}
   - {fileID: 439983893}
-  - {fileID: 1563380579}
   - {fileID: 292899421}
+  - {fileID: 1563380579}
   - {fileID: 1097391888}
   m_Father: {fileID: 2083022865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1459,6 +1459,7 @@ MonoBehaviour:
   m_EnemyParent: {fileID: 218163816}
   m_CardAnimationPrefab:
   - {fileID: 4997620620219260603, guid: e2ae59d27fe94ca40ba6579d2ecca409, type: 3}
+  - {fileID: 7377129633274543470, guid: 05e47958bc368d14fa1ef54eab275dfb, type: 3}
 --- !u!1 &730190800
 GameObject:
   m_ObjectHideFlags: 0

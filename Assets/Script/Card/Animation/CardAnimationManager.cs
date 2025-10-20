@@ -1,10 +1,19 @@
 using UnityEngine;
 
+/// <summary>
+/// カードのアニメーションタイプ
+/// </summary>
 public enum CardAnimationType
 {
+    // カードを引く
     Draw,
+    // 召喚
+    Summon,
 }
 
+/// <summary>
+///　カードのアニメーション管理クラス
+/// </summary>
 public class CardAnimationManager : MonoBehaviour
 {
     [SerializeField, Header("プレイヤーの親オブジェクト")]
@@ -26,7 +35,7 @@ public class CardAnimationManager : MonoBehaviour
 
         // 設定する親オブジェクト
         Transform parent = null;
-        switch(gameSystem.m_CurrentGameState)
+        switch (gameSystem.m_CurrentGameState)
         {
             case GameSystem.GameState.PlayerTurn:
                 parent = m_PlayerParent;
@@ -38,11 +47,11 @@ public class CardAnimationManager : MonoBehaviour
 
         // 作成するアニメーションオブジェクト
         GameObject animationObj = null;
-        switch(In_type)
+        switch (In_type)
         {
             case CardAnimationType.Draw:
                 // 引く前のカード枚数を取得
-                for(int i = 0; i < parent.childCount; i++)
+                for (int i = 0; i < parent.childCount; i++)
                 {
                     if (parent.GetChild(i).CompareTag("HandCard"))
                     {
@@ -60,12 +69,12 @@ public class CardAnimationManager : MonoBehaviour
 
                 // プレイヤーのカードを引くアニメーションを再生
                 // CardAnimationManagerの子オブジェクトとして生成
-                animationObj = Instantiate(m_CardAnimationPrefab[0],transform);
+                animationObj = Instantiate(m_CardAnimationPrefab[0], transform);
                 animationObj.name = "DrawCardAnimation";
 
                 // 次のカードのテクスチャを取得
                 Sprite nextSprite = null;
-                for(int i = 0; i < parent.childCount; i++)
+                for (int i = 0; i < parent.childCount; i++)
                 {
                     if (parent.GetChild(i).CompareTag("Deck"))
                     {
@@ -74,7 +83,6 @@ public class CardAnimationManager : MonoBehaviour
                         break;
                     }
                 }
-
                 animationObj.GetComponent<DrawCardAnimation>().InitSetting(parent, nextSprite);
                 break;
         }
