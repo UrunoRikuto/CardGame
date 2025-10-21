@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_EnemyParent: {fileID: 218163816}
   m_CardAnimationPrefab:
   - {fileID: 4997620620219260603, guid: e2ae59d27fe94ca40ba6579d2ecca409, type: 3}
-  - {fileID: 7377129633274543470, guid: 05e47958bc368d14fa1ef54eab275dfb, type: 3}
+  - {fileID: 4997620620219260603, guid: dd39adfb2af3daf4693face319e1300e, type: 3}
 --- !u!1 &730190800
 GameObject:
   m_ObjectHideFlags: 0

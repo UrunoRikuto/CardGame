@@ -252,6 +252,6 @@ public class GameSystem : MonoBehaviour
         // CardAnimationManagerの取得
         CardAnimationManager cardAnimationManager = GameObject.Find("CardAnimationManager").GetComponent<CardAnimationManager>();
         // カードを引くアニメーションを再生
-        cardAnimationManager.PlayAnimation(CardAnimationType.Draw);
+        cardAnimationManager.PlayDrawCardAnimation();
     }
 }

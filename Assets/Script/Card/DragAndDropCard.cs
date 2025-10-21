@@ -7,6 +7,7 @@
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// 手札カードのドラッグアンドドロップ
@@ -152,23 +153,20 @@ public class DragAndDropCard : MonoBehaviour,IBeginDragHandler, IDragHandler, IE
                 switch(m_DragCardData.cardType)
                 {
                     case "キャラクター":
-                        // フィールドオブジェクトを作成する処理
-                        GameObject CardObject = GameObject.Instantiate(m_DragCardData.cardFieldPrefab);
-                        // 親をドラック後の親オブジェクトに設定
-                        CardObject.transform.SetParent(m_AffterParentObj);
+                        // 召喚アニメーションオブジェクトを生成
+                        // CardAnimationManagerの取得
+                        CardAnimationManager cardAnimationManager = GameObject.Find("CardAnimationManager").GetComponent<CardAnimationManager>();
 
-                        // スケールを設定
-                        CardObject.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-
-                        // カードデータの設定
-                        CardInfo cardInfo = CardObject.GetComponent<CardInfo>();
-                        cardInfo.m_CardData = m_DragCardData;
-
-                        // 生成時発動の能力を発動
-                        if (cardInfo.m_CardData.cardActivationTiming == CardAbility.ActivationTiming.Start)
+                        // フィールドオブジェクトに必要な情報を設定
+                        SummonCardAnimation.FieldObjectInfo fieldObjectInfo = new SummonCardAnimation.FieldObjectInfo
                         {
-                            CardObject.GetComponent<CardAbility>().Action();
-                        }
+                            prefab = m_DragCardData.cardFieldPrefab,
+                            parentTransform = m_AffterParentObj,
+                            cardData = m_DragCardData
+                        };
+
+                        // 召喚アニメーションを再生
+                        cardAnimationManager.PlaySummonCardAnimation(fieldObjectInfo, transform.GetComponent<Image>().sprite);
                         break;
                     case "スペル":
                         // TODO: 能力を発動させる

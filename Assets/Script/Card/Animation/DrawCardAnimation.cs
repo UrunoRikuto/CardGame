@@ -19,6 +19,8 @@ public class DrawCardAnimation : MonoBehaviour
     /// <summary>
     /// 初期化処理
     /// </summary>
+    /// <param name="In_Parent">親オブジェクト</param>
+    /// <param name="In_Sprite">変化するテクスチャ</param>
     public void InitSetting(Transform In_Parent, Sprite In_Sprite)
     {
         bool StartSetting = false;
