@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeSystem : MonoBehaviour
 {
@@ -45,6 +46,9 @@ public class UpgradeSystem : MonoBehaviour
 
         // 強化済みなのでターゲットに設定できないようにする
         TargetCard.GetComponent<SetUpgradeTarget>().m_bTarget = false;
+
+        // 強化後のテクスチャに変更
+        TargetCard.GetComponent<Image>().sprite = upgradeCardData.upgradeSprite;
 
         // 強化対象のクリア
         TargetCard = null;

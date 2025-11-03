@@ -50,6 +50,9 @@ public class CardData
 
     [Header("フィールドプレハブ")]
     public GameObject cardFieldPrefab;
+
+    [Header("強化時のテクスチャ")]
+    public Sprite upgradeSprite;
 }
 
 [CreateAssetMenu(fileName = "CardDatabase", menuName = "Scriptable Objects/CardDatabase")]

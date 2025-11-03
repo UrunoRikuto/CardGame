@@ -25,6 +25,7 @@ MonoBehaviour:
     cardAbilityType: 3
     cardHandPrefab: {fileID: 2681092509442886893, guid: 04000d8c8fec3294e9b85d2b441f2166, type: 3}
     cardFieldPrefab: {fileID: 4626075442848734300, guid: 8cdba4fcc601e9342ae434c513be3810, type: 3}
+    upgradeSprite: {fileID: 21300000, guid: f6b8f51fb1e0d8d4a93f27f36147710f, type: 3}
   - cardName: "\u30B4\u30D6\u30EA\u30F3"
     ActiveFlag: 1
     AttackFlag: 0
@@ -37,6 +38,7 @@ MonoBehaviour:
     cardAbilityType: 0
     cardHandPrefab: {fileID: 2681092509442886893, guid: 2c476a0beaa46ca4fbf1f5defe6a751e, type: 3}
     cardFieldPrefab: {fileID: 4626075442848734300, guid: 89764f6974389af44b505c2ea4dab848, type: 3}
+    upgradeSprite: {fileID: 21300000, guid: cbf1408d0b00f1141a52d4ba51f9d429, type: 3}
   - cardName: "\u76FE\u5175"
     ActiveFlag: 1
     AttackFlag: 0
@@ -49,6 +51,7 @@ MonoBehaviour:
     cardAbilityType: 2
     cardHandPrefab: {fileID: 2681092509442886893, guid: e09cf36c1a5319f43a3cf66d80642575, type: 3}
     cardFieldPrefab: {fileID: 4626075442848734300, guid: 72112212f5d2b674ca4d8d6017656094, type: 3}
+    upgradeSprite: {fileID: 21300000, guid: 9f09a3592d2a76b4c91f151c60c5f7b7, type: 3}
   - cardName: "\u5F13\u5175"
     ActiveFlag: 1
     AttackFlag: 0
@@ -61,6 +64,7 @@ MonoBehaviour:
     cardAbilityType: 0
     cardHandPrefab: {fileID: 2681092509442886893, guid: 7f39f827175549b44abda7c2ec3ebe6f, type: 3}
     cardFieldPrefab: {fileID: 4626075442848734300, guid: 9fef09c5c5410d643b5c3aef9bfad315, type: 3}
+    upgradeSprite: {fileID: 21300000, guid: 9e5484d2561737a4b8af7c4d75c7e509, type: 3}
   - cardName: "\u72FC"
     ActiveFlag: 1
     AttackFlag: 0
@@ -73,6 +77,7 @@ MonoBehaviour:
     cardAbilityType: 0
     cardHandPrefab: {fileID: 2681092509442886893, guid: 0b2b5a849acb68443ab205875e963b98, type: 3}
     cardFieldPrefab: {fileID: 4626075442848734300, guid: f4f895e579f09a14dad708237c240d63, type: 3}
+    upgradeSprite: {fileID: 21300000, guid: 9e5484d2561737a4b8af7c4d75c7e509, type: 3}
   - cardName: "\u72FC\u300C\u30EA\u30FC\u30C0\u30FC\u300D"
     ActiveFlag: 1
     AttackFlag: 0
@@ -85,3 +90,4 @@ MonoBehaviour:
     cardAbilityType: 3
     cardHandPrefab: {fileID: 2681092509442886893, guid: 0fd3006f2dd0e2440b4168b89a6bd41d, type: 3}
     cardFieldPrefab: {fileID: 4626075442848734300, guid: 3398dd6b7e9209547b44f56d4099233d, type: 3}
+    upgradeSprite: {fileID: 21300000, guid: 9e5484d2561737a4b8af7c4d75c7e509, type: 3}
