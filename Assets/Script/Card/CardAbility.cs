@@ -13,6 +13,9 @@ using UnityEngine;
 /// </summary>
 public class CardAbility : MonoBehaviour
 {
+    [SerializeField]
+    private CardDatabase cardDatabase;
+
     /// <summary>
     /// カードの能力タイプ
     /// </summary>
@@ -236,11 +239,8 @@ public class CardAbility : MonoBehaviour
         // 召喚可能数が0以下なら処理を抜ける
         if (CanSummonCount <= 0) return;
 
-        // アセットの中のデータベースを取得
-        CardDatabase cardDataBase = AssetDatabase.LoadAssetAtPath<CardDatabase>("Assets/ScriptableObject/CardDatabase.asset");
-
         // cardDataBaseが取得できなければ処理を抜ける
-        if (cardDataBase == null) return;
+        if (cardDatabase == null) return;
 
         int summonNum = 0;
         // モンスターの名前で処理を分岐
@@ -253,7 +253,7 @@ public class CardAbility : MonoBehaviour
                 for(int i = 0; i < summonNum;i++)
                 {
                     // データベースをインスタンス化
-                    CardDatabase cardDatabaseInstance = ScriptableObject.Instantiate(cardDataBase);
+                    CardDatabase cardDatabaseInstance = ScriptableObject.Instantiate(cardDatabase);
                     // 狼のフィールドプレハブを取得
                     GameObject WolfPrefab = CardDatabase.GetCardData("狼", cardDatabaseInstance).cardFieldPrefab;
                     // 狼を生成
@@ -273,7 +273,7 @@ public class CardAbility : MonoBehaviour
                 for( int i = 0; i < summonNum; i++)
                 {
                     // データベースをインスタンス化
-                    CardDatabase cardDatabaseInstance = ScriptableObject.Instantiate(cardDataBase);
+                    CardDatabase cardDatabaseInstance = ScriptableObject.Instantiate(cardDatabase);
                     // スライムのフィールドプレハブを取得
                     GameObject SlimePrefab = CardDatabase.GetCardData("スライム", cardDatabaseInstance).cardFieldPrefab;
                     // スライムを生成

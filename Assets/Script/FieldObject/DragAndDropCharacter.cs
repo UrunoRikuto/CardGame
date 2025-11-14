@@ -81,7 +81,9 @@ public class DragAndDropCharacter : MonoBehaviour, IBeginDragHandler, IDragHandl
         // カードデータを設定
         battleSystem.m_BattleCardData[0] = cardData;
         // 親オブジェクトを設定
-        battleSystem.m_AttackerParent = transform.parent.parent;
+        battleSystem.m_AttackerParent = transform.parent;
+        // カードオブジェクトを設定
+        battleSystem.m_Attacker = transform;
 
 
         // Canvasの子オブジェクトにターゲットオブジェクトを生成
@@ -106,11 +108,6 @@ public class DragAndDropCharacter : MonoBehaviour, IBeginDragHandler, IDragHandl
             // ターゲットオブジェクトの初期設定
             rectTransform.localScale = Vector3.one;
             rectTransform.sizeDelta = new Vector2(1, 1);
-
-            // ターゲットオブジェクトにDragAndDropCharacterコンポーネントを追加
-            //DragAndDropCharacter dragAndDropC = TargetObject.AddComponent<DragAndDropCharacter>();
-            // 自身の参照を設定
-            //dragAndDropC = this;
 
             // ターゲットオブジェクトにトリガー用のコライダーを追加
             TargetObject.AddComponent<BoxCollider2D>().isTrigger = true;

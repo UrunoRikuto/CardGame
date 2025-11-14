@@ -42,7 +42,7 @@ public class FieldCard : MonoBehaviour
             CardInfo cardInfo = transform.GetChild(i).GetComponent<CardInfo>();
 
             // カードの体力が0以下の場合、フィールドから削除
-            if (cardInfo.m_CardData.cardLife <= 0)
+            if (cardInfo.m_CardData.DeadFlag)
             {
                 Debug.Log("カードの体力が0以下になったため、フィールドから削除します: " + cardInfo.m_CardData.cardName);
                 // 子オブジェクトの削除

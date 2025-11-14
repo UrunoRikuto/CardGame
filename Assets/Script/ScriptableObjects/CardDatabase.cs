@@ -21,6 +21,9 @@ public class CardData
     [Header("攻撃を行うかどうかのフラグ")]
     public bool AttackFlag = false;
 
+    [Header("このカードが死んでいるかのフラグ")]
+    public bool DeadFlag = false;
+
     [Header("カードの種類")]
     public string cardType;
 

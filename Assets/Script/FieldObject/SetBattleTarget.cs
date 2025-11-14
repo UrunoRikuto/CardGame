@@ -56,7 +56,10 @@ public class SetBattleTarget : MonoBehaviour
             = transform.GetComponent<CardInfo>().m_CardData;
 
         // í“¬‚Ì–hŒä‘¤‚Ìe‚ğİ’è
-        battleSystem.m_DefenderParent = transform;
+        battleSystem.m_DefenderParent = transform.parent;
+
+        // í“¬‚Ì–hŒä‘¤‚ğİ’è
+        battleSystem.m_Defender = transform;
     }
 
     /// <summary>
@@ -76,5 +79,8 @@ public class SetBattleTarget : MonoBehaviour
 
         // í“¬‚Ì–hŒä‘¤‚Ìe‚ğƒNƒŠƒA
         battleSystem.m_DefenderParent = null;
+
+        // í“¬‚Ì–hŒä‘¤‚ğƒNƒŠƒA
+        battleSystem.m_Defender = null;
     }
 }

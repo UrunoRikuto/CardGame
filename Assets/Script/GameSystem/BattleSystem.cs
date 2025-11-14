@@ -21,9 +21,13 @@ public class BattleSystem : MonoBehaviour
 
     // 攻撃側の親オブジェクト
     public Transform m_AttackerParent;
+    // 攻撃側のカードオブジェクト
+    public Transform m_Attacker;
 
     // 防御側の親オブジェクト
     public Transform m_DefenderParent;
+    // 防御側のカードオブジェクト
+    public Transform m_Defender;
 
     /// <summary>
     /// 戦闘処理
@@ -53,25 +57,29 @@ public class BattleSystem : MonoBehaviour
 
         // まだ戦闘を行っていなかったら
         // 防御側のカードデータが設定されていたら
-        if (m_BattleCardData[1] != null && !IsBattle)
+        if (m_BattleCardData[0] != null && m_BattleCardData[1] != null && !IsBattle)
         {
             // それぞれのカードの攻撃力とライフを比較して、ダメージを与える
             m_BattleCardData[0].cardLife -= m_BattleCardData[1].cardAttack;
             m_BattleCardData[1].cardLife -= m_BattleCardData[0].cardAttack;
 
-            // ライフが0未満になった場合は0に補正する
-            if (m_BattleCardData[0].cardLife < 0)
+            // ライフが0以下になった場合は0に補正する
+            if (m_BattleCardData[0].cardLife <= 0)
             {
                 m_BattleCardData[0].cardLife = 0;
                 // 死亡時効果の発動
-                m_AttackerParent.GetComponent<CardAbility>().OnDead();
+                m_Attacker.GetComponent<CardAbility>().OnDead();
+                // 死亡フラグを立てる
+                m_BattleCardData[0].DeadFlag = true;
 
             }
-            if (m_BattleCardData[1].cardLife < 0)
+            if (m_BattleCardData[1].cardLife <= 0)
             {
                 m_BattleCardData[1].cardLife = 0;
                 // 死亡時効果の発動
-                m_DefenderParent.GetComponent<CardAbility>().OnDead();
+                m_Defender.GetComponent<CardAbility>().OnDead();
+                // 死亡フラグを立てる
+                m_BattleCardData[1].DeadFlag = true;
             }
 
             IsBattle = true;
