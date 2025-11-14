@@ -116,7 +116,7 @@ public class CardAbility : MonoBehaviour
     /// 能力の行動処理
     ///【死亡時】
     /// </summary>
-    private void OnDestroy()
+    public void OnDead()
     {
         // カードデータを取得
         CardInfo cardInfo = GetComponent<CardInfo>();
@@ -226,6 +226,11 @@ public class CardAbility : MonoBehaviour
     {
         // 召喚可能数の検査
         FieldCard fieldCard = transform.parent.GetComponent<FieldCard>();
+
+        // フィールドカードが取得できなければ処理を抜ける
+        if (fieldCard == null) return;
+
+        // 召喚可能数を計算
         int CanSummonCount = fieldCard.maxFieldCardSize - fieldCard.transform.childCount;
         
         // 召喚可能数が0以下なら処理を抜ける
@@ -233,6 +238,10 @@ public class CardAbility : MonoBehaviour
 
         // アセットの中のデータベースを取得
         CardDatabase cardDataBase = AssetDatabase.LoadAssetAtPath<CardDatabase>("Assets/ScriptableObject/CardDatabase.asset");
+
+        // cardDataBaseが取得できなければ処理を抜ける
+        if (cardDataBase == null) return;
+
         int summonNum = 0;
         // モンスターの名前で処理を分岐
         switch (Name)

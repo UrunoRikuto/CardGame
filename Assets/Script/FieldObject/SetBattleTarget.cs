@@ -54,6 +54,9 @@ public class SetBattleTarget : MonoBehaviour
         // 戦闘の防御側のカードデータを設定
         battleSystem.m_BattleCardData[1]
             = transform.GetComponent<CardInfo>().m_CardData;
+
+        // 戦闘の防御側の親を設定
+        battleSystem.m_DefenderParent = transform;
     }
 
     /// <summary>
@@ -70,5 +73,8 @@ public class SetBattleTarget : MonoBehaviour
 
         // 戦闘の非攻撃者側のカードデータをクリア
         battleSystem.m_BattleCardData[1] = null;
+
+        // 戦闘の防御側の親をクリア
+        battleSystem.m_DefenderParent = null;
     }
 }

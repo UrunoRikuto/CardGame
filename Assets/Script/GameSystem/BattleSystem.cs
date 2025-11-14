@@ -22,6 +22,9 @@ public class BattleSystem : MonoBehaviour
     // 攻撃側の親オブジェクト
     public Transform m_AttackerParent;
 
+    // 防御側の親オブジェクト
+    public Transform m_DefenderParent;
+
     /// <summary>
     /// 戦闘処理
     /// </summary>
@@ -60,10 +63,15 @@ public class BattleSystem : MonoBehaviour
             if (m_BattleCardData[0].cardLife < 0)
             {
                 m_BattleCardData[0].cardLife = 0;
+                // 死亡時効果の発動
+                m_AttackerParent.GetComponent<CardAbility>().OnDead();
+
             }
             if (m_BattleCardData[1].cardLife < 0)
             {
                 m_BattleCardData[1].cardLife = 0;
+                // 死亡時効果の発動
+                m_DefenderParent.GetComponent<CardAbility>().OnDead();
             }
 
             IsBattle = true;
