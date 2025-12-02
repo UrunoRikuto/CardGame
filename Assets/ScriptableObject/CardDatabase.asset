@@ -16,6 +16,7 @@ MonoBehaviour:
   - cardName: "\u30B9\u30E9\u30A4\u30E0"
     ActiveFlag: 1
     AttackFlag: 0
+    DeadFlag: 0
     cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
     cardRace: "\u9B54\u7269"
     cardCost: 1
@@ -29,6 +30,7 @@ MonoBehaviour:
   - cardName: "\u30B4\u30D6\u30EA\u30F3"
     ActiveFlag: 1
     AttackFlag: 0
+    DeadFlag: 0
     cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
     cardRace: "\u9B54\u7269"
     cardCost: 2
@@ -42,6 +44,7 @@ MonoBehaviour:
   - cardName: "\u76FE\u5175"
     ActiveFlag: 1
     AttackFlag: 0
+    DeadFlag: 0
     cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
     cardRace: "\u5175\u58EB"
     cardCost: 2
@@ -51,10 +54,11 @@ MonoBehaviour:
     cardAbilityType: 2
     cardHandPrefab: {fileID: 2681092509442886893, guid: e09cf36c1a5319f43a3cf66d80642575, type: 3}
     cardFieldPrefab: {fileID: 4626075442848734300, guid: 72112212f5d2b674ca4d8d6017656094, type: 3}
-    upgradeSprite: {fileID: 21300000, guid: 9e5484d2561737a4b8af7c4d75c7e509, type: 3}
+    upgradeSprite: {fileID: 21300000, guid: 9f09a3592d2a76b4c91f151c60c5f7b7, type: 3}
   - cardName: "\u5F13\u5175"
     ActiveFlag: 1
     AttackFlag: 0
+    DeadFlag: 0
     cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
     cardRace: "\u5175\u58EB"
     cardCost: 2
@@ -68,6 +72,7 @@ MonoBehaviour:
   - cardName: "\u72FC"
     ActiveFlag: 1
     AttackFlag: 0
+    DeadFlag: 0
     cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
     cardRace: "\u72FC"
     cardCost: 1
@@ -81,6 +86,7 @@ MonoBehaviour:
   - cardName: "\u72FC\u300C\u30EA\u30FC\u30C0\u30FC\u300D"
     ActiveFlag: 1
     AttackFlag: 0
+    DeadFlag: 0
     cardType: "\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC"
     cardRace: "\u72FC"
     cardCost: 3

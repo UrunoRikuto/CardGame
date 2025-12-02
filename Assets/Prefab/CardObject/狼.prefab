@@ -321,15 +321,17 @@ MonoBehaviour:
     cardName: 
     ActiveFlag: 1
     AttackFlag: 0
+    DeadFlag: 0
     cardType: 
     cardRace: 
-    cardCost: 0
-    cardAttack: 0
-    cardLife: 0
+    cardCost: 1
+    cardAttack: 1
+    cardLife: 1
     cardActivationTiming: 0
     cardAbilityType: 0
     cardHandPrefab: {fileID: 0}
     cardFieldPrefab: {fileID: 0}
+    upgradeSprite: {fileID: 0}
 --- !u!114 &4730734212269318114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +360,7 @@ MonoBehaviour:
     cardName: 
     ActiveFlag: 1
     AttackFlag: 0
+    DeadFlag: 0
     cardType: 
     cardRace: 
     cardCost: 0
@@ -367,6 +370,7 @@ MonoBehaviour:
     cardAbilityType: 0
     cardHandPrefab: {fileID: 0}
     cardFieldPrefab: {fileID: 0}
+    upgradeSprite: {fileID: 0}
 --- !u!1 &3133508920632249305
 GameObject:
   m_ObjectHideFlags: 0
