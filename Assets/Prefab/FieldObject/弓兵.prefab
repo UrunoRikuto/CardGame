@@ -149,7 +149,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 90e3efa31682d2840826079501ebd4f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 770df2aeab1cf184ba4843730adda563, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -220,6 +220,7 @@ MonoBehaviour:
     cardName: 
     ActiveFlag: 1
     AttackFlag: 0
+    DeadFlag: 0
     cardType: 
     cardRace: 
     cardCost: 1
