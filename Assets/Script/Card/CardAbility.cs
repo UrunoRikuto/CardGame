@@ -139,21 +139,64 @@ public class CardAbility : MonoBehaviour
                 // 何もしない
                 break;
             case AbilityType.Guard:
-                // SetTagetのターゲット設定を有効にする
-                for (int i = 0; i < transform.parent.childCount; i++)
-                {
-                    // 子オブジェクトを取得
-                    Transform childTransform = transform.parent.GetChild(i);
+                // Guard死亡時：他にGuardが残っていなければ、
+                // 「相手側(=攻撃者から見た防御側)」のターゲット制限を解除する。
 
-                    // SetBattleTargetコンポーネントを取得してターゲット設定を有効にする
+                // 戦闘システムを取得（存在しないケースもあるためnull許容）
+                BattleSystem battleSystem = GameObject.Find("MainSystem")?.GetComponent<BattleSystem>();
+
+                // 防御側(Guardを持っていた側)の場を取得
+                Transform defenderField = battleSystem != null ? battleSystem.m_DefenderParent : transform.parent;
+                if (defenderField == null) break;
+
+                // 防御側ルート（Player/Enemy）
+                Transform defenderRoot = defenderField.parent;
+
+                // 自分以外に守護持ちが残っている場合は、ターゲット制限は維持する
+                bool hasOtherGuard = false;
+                for (int i = 0; i < defenderField.childCount; i++)
+                {
+                    Transform childTransform = defenderField.GetChild(i);
+                    if (childTransform == null) continue;
+
+                    //既に破壊予約/削除済みで transform が無効になるケースを避けるためコンポーネント存在で判定
+                    CardInfo otherInfo = childTransform.GetComponent<CardInfo>();
+                    if (otherInfo == null || otherInfo.m_CardData == null) continue;
+
+                    // 自分自身(このGuard)は無視
+                    if (childTransform == transform) continue;
+
+                    if (otherInfo.m_CardData.cardAbilityType == AbilityType.Guard)
+                    {
+                        hasOtherGuard = true;
+                        break;
+                    }
+                }
+
+                if (hasOtherGuard) break;
+
+                // 他に守護がいない場合：防御側フィールド上の全カードをターゲット可能に戻す
+                for (int i = 0; i < defenderField.childCount; i++)
+                {
+                    Transform childTransform = defenderField.GetChild(i);
+                    if (childTransform == null) continue;
+
                     SetBattleTarget setBattleTarget = childTransform.GetComponentInChildren<SetBattleTarget>();
                     if (setBattleTarget != null)
                     {
                         setBattleTarget.m_bTarget = true;
                     }
                 }
-                // 自身のリーダーのターゲット設定を有効にする
-                transform.parent.parent.GetComponentInChildren<Leader>().m_bTarget = false;
+
+                // 防御側リーダーもターゲット可能に戻す
+                if (defenderRoot != null)
+                {
+                    Leader leader = defenderRoot.GetComponentInChildren<Leader>();
+                    if (leader != null)
+                    {
+                        leader.m_bTarget = true;
+                    }
+                }
                 break;
             case AbilityType.Summon:
                 // 発動タイミングが死亡時ではない場合何もしない
@@ -174,6 +217,10 @@ public class CardAbility : MonoBehaviour
     /// </summary>
     public void Action()
     {
+        // 親のカードデータの生存判定
+        CardData parentCardData = transform.GetComponent<CardInfo>()?.m_CardData;
+        if (parentCardData == null || parentCardData.DeadFlag) return;
+
         // カードデータを取得
         CardInfo cardInfo = GetComponent<CardInfo>();
         // 能力タイプを取得
