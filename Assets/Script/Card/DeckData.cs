@@ -26,7 +26,7 @@ public class DeckData : MonoBehaviour
 
     [Header("デッキの最大サイズ")]
     [SerializeField]
-    private int MAX_DECK_SIZE = 20;
+    private int MAX_DECK_SIZE = 30;
 
     [Header("デッキに設定するカードデータ")]
     [SerializeField]

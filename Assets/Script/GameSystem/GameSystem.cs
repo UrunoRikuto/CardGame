@@ -239,6 +239,22 @@ public class GameSystem : MonoBehaviour
     /// </summary>
     private void NextTurn()
     {
+        // リーダーが生存しているか確認
+        Leader playerLeader = m_PlayerParent.GetComponentInChildren<Leader>();
+        if(playerLeader.m_nHp <= 0)
+        {
+            Debug.Log("プレイヤーのリーダーが敗北しました。");
+            SetEndGame();
+            return;
+        }
+        Leader enemyLeader = m_EnemyParent.GetComponentInChildren<Leader>();
+        if (enemyLeader.m_nHp <= 0)
+        {
+            Debug.Log("敵のリーダーが敗北しました。");
+            SetEndGame();
+            return;
+        }
+
         // ターン数をカウントアップ
         m_nTarnNum++;
         Debug.Log("ターン数: " + m_nTarnNum);

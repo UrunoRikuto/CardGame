@@ -5,7 +5,6 @@
 * 概要：UIで使用するスプライト素材の管理
 * 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
