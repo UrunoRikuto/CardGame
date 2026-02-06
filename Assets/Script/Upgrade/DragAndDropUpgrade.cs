@@ -15,6 +15,11 @@ using UnityEngine.UI;
 /// </summary>
 public class DragAndDropUpgrade : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField]
+    public Sprite NoUpgradeOrb;
+    [SerializeField]
+    public Sprite UpgradeOrb;
+
     // 自身のRectTransformを取得
     private RectTransform StartTransform
     {
@@ -45,10 +50,9 @@ public class DragAndDropUpgrade : MonoBehaviour, IBeginDragHandler, IDragHandler
     /// </summary>
     private void Update()
     {
-        // 強化可能回数が0以下の場合は灰色に設定
-        if (m_UpgradeCount <= 0) transform.GetComponent<Image>().color = Color.gray;
-        // 黄色に設定
-        else transform.GetComponent<Image>().color = Color.yellow;
+        // 強化可能回数が0以下の場合
+        if (m_UpgradeCount <= 0) transform.GetComponent<Image>().sprite = NoUpgradeOrb;
+        else transform.GetComponent<Image>().sprite = UpgradeOrb;
 
         // 強化可能回数をテキストに設定
         transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_UpgradeCount.ToString();

@@ -92,8 +92,8 @@ MonoBehaviour:
     cardCost: 3
     cardAttack: 3
     cardLife: 3
-    cardActivationTiming: 4
+    cardActivationTiming: 0
     cardAbilityType: 3
     cardHandPrefab: {fileID: 2681092509442886893, guid: 0fd3006f2dd0e2440b4168b89a6bd41d, type: 3}
     cardFieldPrefab: {fileID: 4626075442848734300, guid: 3398dd6b7e9209547b44f56d4099233d, type: 3}
-    upgradeSprite: {fileID: 21300000, guid: 9e5484d2561737a4b8af7c4d75c7e509, type: 3}
+    upgradeSprite: {fileID: 0}
